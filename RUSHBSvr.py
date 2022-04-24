@@ -136,7 +136,7 @@ class RushB:
                     continue
             
                    
-            print(len(self.client_list))    
+            # print(len(self.client_list))    
     
             if reserved == STATUS['RESERVED'] and ver == STATUS['VER']:
                 
@@ -168,9 +168,9 @@ class RushB:
                 elif flags == STATUS['ACK_FIN'] and sequence_num == client.get_client_seq() + 1 and ack_num == client.get_sequence() and checksum == 0:
                     self.send_packct(client, address, sequence_num, sequence_num, STATUS['ACK_FIN'])
                     self.client_list.remove(client)
-                    print(len(self.client_list))
-                    #self.socket.close()
-                    #sys.exit()
+                    # print(len(self.client_list))
+                    # self.socket.close()
+                    # sys.exit()
                             
                 elif flags == STATUS['GET_CHK'] and sequence_num == 1 and ack_num == 0:
                     if checksum == compute_checksum(self.get_filename(data[8:])):
